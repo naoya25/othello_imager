@@ -55,7 +55,14 @@ class PlayPage extends ConsumerWidget {
         ),
       ),
       body: board.when(
-        data: (board) => PreviewBoard(board: board, onTapTile: handleTapTile),
+        data: (board) {
+          return Column(
+            children: [
+              const Text('あなたは白です'),
+              PreviewBoard(board: board, onTapTile: handleTapTile),
+            ],
+          );
+        },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stack) => Center(child: Text('Error: $error')),
       ),

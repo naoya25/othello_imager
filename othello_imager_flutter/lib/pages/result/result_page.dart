@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:othello_imager_flutter/components/othello_image.dart';
 import 'package:othello_imager_flutter/components/preview_board.dart';
+import 'package:othello_imager_flutter/gen/assets.gen.dart';
 
 class ResultPage extends StatelessWidget {
   final int playerScore;
@@ -20,20 +22,23 @@ class ResultPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('ゲーム終了'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('あなたのスコア: $playerScore'),
-            Text('コンピュータのスコア: $computerScore'),
-            PreviewBoard(board: board),
-            ElevatedButton(
-              onPressed: () {
-                context.go('/');
-              },
-              child: const Text('ホームに戻る'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('あなたのスコア: $playerScore'),
+              Text('コンピュータのスコア: $computerScore'),
+              PreviewBoard(board: board),
+              ElevatedButton(
+                onPressed: () {
+                  context.go('/');
+                },
+                child: const Text('ホームに戻る'),
+              ),
+              OthelloImage(board: board),
+            ],
+          ),
         ),
       ),
     );

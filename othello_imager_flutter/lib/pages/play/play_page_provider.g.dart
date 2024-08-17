@@ -6,7 +6,7 @@ part of 'play_page_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$playPageNotifierHash() => r'9e4aacc7ec86d7be53e5acf16561223563d4bd8a';
+String _$playPageNotifierHash() => r'c7364790cab84cfb082c72cd11b00112d00c2bc5';
 
 /// See also [PlayPageNotifier].
 @ProviderFor(PlayPageNotifier)

@@ -23,15 +23,24 @@ class PreviewBoard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 for (int j = 0; j < 8; j++)
-                  GestureDetector(
-                    onTap: () {
-                      if (onTapTile != null) onTapTile!(i, j);
-                    },
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      margin: const EdgeInsets.all(2.0),
-                      color: _getTileColor(board[i][j]),
+                  Container(
+                    color: Colors.green,
+                    margin: const EdgeInsets.all(1),
+                    child: GestureDetector(
+                      onTap: () {
+                        if (onTapTile != null) onTapTile!(i, j);
+                      },
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        margin: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: _getTileColor(board[i][j]),
+                          shape: board[i][j] == ConstantValue.playerEmpty
+                              ? BoxShape.rectangle
+                              : BoxShape.circle,
+                        ),
+                      ),
                     ),
                   ),
               ],
@@ -41,14 +50,14 @@ class PreviewBoard extends StatelessWidget {
     );
   }
 
-  Color _getTileColor(int value) {
+  Color? _getTileColor(int value) {
     switch (value) {
       case ConstantValue.playerCp:
         return Colors.black;
       case ConstantValue.playerUser:
         return Colors.white;
       default:
-        return Colors.green;
+        return null;
     }
   }
 }

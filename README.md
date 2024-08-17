@@ -23,6 +23,9 @@
 
 - go_router
 - riverpod 関連いろいろ
+- flutter_gen
+  - 画像管理
+- image_gallery_saver
 
 #### TODO
 
