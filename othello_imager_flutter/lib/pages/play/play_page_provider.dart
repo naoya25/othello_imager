@@ -45,7 +45,7 @@ class PlayPageNotifier extends _$PlayPageNotifier {
     );
 
     if (player == ConstantValue.playerUser) {
-      _computerMove();
+      computerMove();
     }
     if (_isGameOver(state.value!)) {
       return state.value;
@@ -121,7 +121,7 @@ class PlayPageNotifier extends _$PlayPageNotifier {
   }
 
   // コンピュータのランダムな動き
-  void _computerMove() {
+  void computerMove() {
     List<List<int>> validMoves = [];
 
     for (int i = 0; i < 8; i++) {

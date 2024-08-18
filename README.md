@@ -21,14 +21,11 @@
 
 #### 使用技術
 
-- go_router
-- riverpod 関連いろいろ
-- flutter_gen
-  - 画像管理
-- image_gallery_saver
+- serverpod でやってるが、server 側は何もやってない
+- 画像保存
+  - https://qiita.com/isekiryu/items/5c5562b2b45ffd1c5afc
 
 #### TODO
 
-- パス機能
 - 画像生成
-- 画像表示
+- CP を強くする

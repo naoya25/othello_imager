@@ -60,6 +60,12 @@ class PlayPage extends ConsumerWidget {
             children: [
               const Text('あなたは白です'),
               PreviewBoard(board: board, onTapTile: handleTapTile),
+              TextButton(
+                onPressed: () {
+                  playPageNotifier.computerMove();
+                },
+                child: const Text('パス'),
+              )
             ],
           );
         },
