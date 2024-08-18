@@ -22,8 +22,6 @@
 #### 使用技術
 
 - serverpod でやってるが、server 側は何もやってない
-- 画像保存
-  - https://qiita.com/isekiryu/items/5c5562b2b45ffd1c5afc
 
 #### TODO
 
