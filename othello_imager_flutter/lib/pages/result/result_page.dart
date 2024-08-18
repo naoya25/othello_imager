@@ -46,7 +46,10 @@ class ResultPage extends ConsumerWidget {
               ),
               TextButton(
                 onPressed: () async {
-                  await resultPageNotifier.saveImage(repaintBoundaryKey);
+                  await resultPageNotifier.saveImage(
+                    repaintBoundaryKey,
+                    context,
+                  );
                 },
                 child: const Text('Save'),
               )

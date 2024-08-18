@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:othello_imager_flutter/utils/snackbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -16,7 +17,10 @@ class ResultPageNotifier extends _$ResultPageNotifier {
     return this;
   }
 
-  Future<void> saveImage(GlobalKey repaintBoundaryKey) async {
+  Future<void> saveImage(
+    GlobalKey repaintBoundaryKey,
+    BuildContext context,
+  ) async {
     try {
       RenderRepaintBoundary boundary = repaintBoundaryKey.currentContext!
           .findRenderObject() as RenderRepaintBoundary;
@@ -34,9 +38,18 @@ class ResultPageNotifier extends _$ResultPageNotifier {
       final File imgFile = File(filePath);
       await imgFile.writeAsBytes(pngBytes);
 
-      print('画像が保存されました: $filePath');
+      if (!context.mounted) return;
+      showSnackBar(
+        context: context,
+        message: '画像が保存されました: $filePath',
+        duration: const Duration(minutes: 3),
+      );
     } catch (e) {
-      print('画像保存中にエラーが発生しました: $e');
+      showSnackBar(
+        context: context,
+        message: '画像保存中にエラーが発生しました: $e',
+        duration: const Duration(minutes: 3),
+      );
     }
   }
 }
