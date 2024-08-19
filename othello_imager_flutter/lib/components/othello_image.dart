@@ -14,7 +14,7 @@ class OthelloImage extends StatelessWidget {
     required this.board,
     required this.imageUrl,
     required this.doRetry,
-    this.w = 300,
+    this.w = 350,
   });
 
   @override

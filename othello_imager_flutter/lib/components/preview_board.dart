@@ -31,8 +31,8 @@ class PreviewBoard extends StatelessWidget {
                         if (onTapTile != null) onTapTile!(i, j);
                       },
                       child: Container(
-                        width: 40,
-                        height: 40,
+                        width: 320 / ConstantValue.othelloSize,
+                        height: 320 / ConstantValue.othelloSize,
                         margin: const EdgeInsets.all(2),
                         decoration: BoxDecoration(
                           color: _getTileColor(board[i][j]),
