@@ -1,22 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:othello_imager_flutter/gen/assets.gen.dart';
 import 'package:othello_imager_flutter/utils/constants.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 class OthelloImage extends StatelessWidget {
   final List<List<int>> board;
+  final AsyncValue<String?> imageUrl;
+  final Future<void> Function() doRetry;
   final double w;
+
   const OthelloImage({
     super.key,
     required this.board,
+    required this.imageUrl,
+    required this.doRetry,
     this.w = 300,
   });
 
   @override
   Widget build(BuildContext context) {
+    return imageUrl.when(
+      data: (url) => url != null
+          ? _othelloImage(url)
+          : TextButton(
+              onPressed: () async {
+                await doRetry();
+              },
+              child: const Text('リトライ'),
+            ),
+      loading: () => const CircularProgressIndicator(),
+      error: (error, stack) => Column(
+        children: [
+          Text('Error: $error'),
+          TextButton(
+            onPressed: () async {
+              await doRetry();
+            },
+            child: const Text('リトライ'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _othelloImage(String url) {
     return Stack(
       children: [
         Positioned.fill(
-          child: Assets.images.test.image(
+          child: Image.network(
+            url,
             height: w,
             width: w,
             fit: BoxFit.cover,

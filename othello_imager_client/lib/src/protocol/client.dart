@@ -26,6 +26,21 @@ class EndpointExample extends _i1.EndpointRef {
       );
 }
 
+/// {@category Endpoint}
+class EndpointOpenAiService extends _i1.EndpointRef {
+  EndpointOpenAiService(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'openAiService';
+
+  _i2.Future<String> generateImage(String prompt) =>
+      caller.callServerEndpoint<String>(
+        'openAiService',
+        'generateImage',
+        {'prompt': prompt},
+      );
+}
+
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
@@ -50,12 +65,18 @@ class Client extends _i1.ServerpodClient {
           onSucceededCall: onSucceededCall,
         ) {
     example = EndpointExample(this);
+    openAiService = EndpointOpenAiService(this);
   }
 
   late final EndpointExample example;
 
+  late final EndpointOpenAiService openAiService;
+
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {'example': example};
+  Map<String, _i1.EndpointRef> get endpointRefLookup => {
+        'example': example,
+        'openAiService': openAiService,
+      };
 
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};

@@ -7,12 +7,12 @@ part of 'result_page_provider.dart';
 // **************************************************************************
 
 String _$resultPageNotifierHash() =>
-    r'ed11d3bcf8122a9d93f342da935ba94f76bbba0b';
+    r'cdf6027d7ed35b77ccfd93bd8e5432710bd4ad52';
 
 /// See also [ResultPageNotifier].
 @ProviderFor(ResultPageNotifier)
-final resultPageNotifierProvider = AutoDisposeNotifierProvider<
-    ResultPageNotifier, ResultPageNotifier>.internal(
+final resultPageNotifierProvider =
+    AsyncNotifierProvider<ResultPageNotifier, String?>.internal(
   ResultPageNotifier.new,
   name: r'resultPageNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final resultPageNotifierProvider = AutoDisposeNotifierProvider<
   allTransitiveDependencies: null,
 );
 
-typedef _$ResultPageNotifier = AutoDisposeNotifier<ResultPageNotifier>;
+typedef _$ResultPageNotifier = AsyncNotifier<String?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:othello_imager_flutter/pages/result/result_page_provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final resultPageNotifier = ref.read(resultPageNotifierProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('オセロイメージャー'),
@@ -13,8 +17,9 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             context.push('/play');
+            await resultPageNotifier.generateImage();
           },
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),

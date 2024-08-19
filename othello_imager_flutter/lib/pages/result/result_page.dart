@@ -19,6 +19,7 @@ class ResultPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final imageUrl = ref.watch(resultPageNotifierProvider);
     final resultPageNotifier = ref.read(resultPageNotifierProvider.notifier);
     final GlobalKey repaintBoundaryKey = GlobalKey();
 
@@ -42,7 +43,11 @@ class ResultPage extends ConsumerWidget {
               ),
               RepaintBoundary(
                 key: repaintBoundaryKey,
-                child: OthelloImage(board: board),
+                child: OthelloImage(
+                  board: board,
+                  imageUrl: imageUrl,
+                  doRetry: resultPageNotifier.generateImage,
+                ),
               ),
               TextButton(
                 onPressed: () async {
@@ -53,12 +58,6 @@ class ResultPage extends ConsumerWidget {
                 },
                 child: const Text('Save'),
               ),
-              TextButton(
-                onPressed: () {
-                  resultPageNotifier.generateImage();
-                },
-                child: const Text('画像生成テスト'),
-              )
             ],
           ),
         ),

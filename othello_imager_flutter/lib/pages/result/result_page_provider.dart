@@ -11,16 +11,22 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'result_page_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class ResultPageNotifier extends _$ResultPageNotifier {
   @override
-  ResultPageNotifier build() {
-    return this;
+  FutureOr<String?> build() async {
+    return null;
   }
 
   Future<void> generateImage() async {
-    // final url = await client.openAiService.generateImage('猫');
-    // print(url);
+    state = const AsyncValue.loading();
+
+    try {
+      final url = await client.openAiService.generateImage('猫');
+      state = AsyncValue.data(url);
+    } catch (e) {
+      state = AsyncValue.error(e, StackTrace.current);
+    }
   }
 
   Future<void> saveImage(
