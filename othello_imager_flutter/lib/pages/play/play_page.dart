@@ -56,17 +56,19 @@ class PlayPage extends ConsumerWidget {
       ),
       body: board.when(
         data: (board) {
-          return Column(
-            children: [
-              const Text('あなたは白です'),
-              PreviewBoard(board: board, onTapTile: handleTapTile),
-              TextButton(
-                onPressed: () {
-                  playPageNotifier.computerMove();
-                },
-                child: const Text('パス'),
-              )
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                const Text('あなたは白です'),
+                PreviewBoard(board: board, onTapTile: handleTapTile),
+                TextButton(
+                  onPressed: () {
+                    playPageNotifier.computerMove();
+                  },
+                  child: const Text('パス'),
+                )
+              ],
+            ),
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),

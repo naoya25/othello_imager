@@ -15,13 +15,14 @@ class PlayPageNotifier extends _$PlayPageNotifier {
   // ボードの初期化
   List<List<int>> _initializeBoard() {
     return List.generate(
-      8,
+      ConstantValue.othelloSize,
       (i) => List.generate(
-        8,
+        ConstantValue.othelloSize,
         (j) {
-          if ((i == 3 && j == 3) || (i == 4 && j == 4)) {
+          const n = ConstantValue.othelloSize ~/ 2;
+          if ((i == n - 1 && j == n - 1) || (i == n && j == n)) {
             return ConstantValue.playerUser;
-          } else if ((i == 3 && j == 4) || (i == 4 && j == 3)) {
+          } else if ((i == n - 1 && j == n) || (i == n && j == n - 1)) {
             return ConstantValue.playerCp;
           } else {
             return ConstantValue.playerEmpty;
@@ -84,7 +85,10 @@ class PlayPageNotifier extends _$PlayPageNotifier {
   }
 
   bool _isWithinBounds(int i, int j) {
-    return i >= 0 && i < 8 && j >= 0 && j < 8;
+    return i >= 0 &&
+        i < ConstantValue.othelloSize &&
+        j >= 0 &&
+        j < ConstantValue.othelloSize;
   }
 
   // 配置可能か判定
@@ -124,8 +128,8 @@ class PlayPageNotifier extends _$PlayPageNotifier {
   void computerMove() {
     List<List<int>> validMoves = [];
 
-    for (int i = 0; i < 8; i++) {
-      for (int j = 0; j < 8; j++) {
+    for (int i = 0; i < ConstantValue.othelloSize; i++) {
+      for (int j = 0; j < ConstantValue.othelloSize; j++) {
         if (_isValidMove(i, j, ConstantValue.playerCp)) {
           validMoves.add([i, j]);
         }
@@ -149,8 +153,8 @@ class PlayPageNotifier extends _$PlayPageNotifier {
   }
 
   bool _playerHasValidMove(int player) {
-    for (int i = 0; i < 8; i++) {
-      for (int j = 0; j < 8; j++) {
+    for (int i = 0; i < ConstantValue.othelloSize; i++) {
+      for (int j = 0; j < ConstantValue.othelloSize; j++) {
         if (_isValidMove(i, j, player)) {
           return true;
         }

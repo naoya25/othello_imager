@@ -14,15 +14,15 @@ class PreviewBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          for (int i = 0; i < 8; i++)
+          for (int i = 0; i < ConstantValue.othelloSize; i++)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < ConstantValue.othelloSize; j++)
                   Container(
                     color: Colors.green,
                     margin: const EdgeInsets.all(1),

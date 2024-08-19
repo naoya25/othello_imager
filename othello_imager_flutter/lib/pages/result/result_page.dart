@@ -52,6 +52,12 @@ class ResultPage extends ConsumerWidget {
                   );
                 },
                 child: const Text('Save'),
+              ),
+              TextButton(
+                onPressed: () {
+                  resultPageNotifier.generateImage();
+                },
+                child: const Text('画像生成テスト'),
               )
             ],
           ),

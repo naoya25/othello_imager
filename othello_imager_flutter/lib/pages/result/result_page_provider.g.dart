@@ -7,7 +7,7 @@ part of 'result_page_provider.dart';
 // **************************************************************************
 
 String _$resultPageNotifierHash() =>
-    r'c81c08fe27d2ed08cadb5580d8435fc4aa82441e';
+    r'ed11d3bcf8122a9d93f342da935ba94f76bbba0b';
 
 /// See also [ResultPageNotifier].
 @ProviderFor(ResultPageNotifier)

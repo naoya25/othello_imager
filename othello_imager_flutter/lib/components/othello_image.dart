@@ -27,14 +27,14 @@ class OthelloImage extends StatelessWidget {
           height: w,
           child: Column(
             children: [
-              for (int i = 0; i < 8; i++)
+              for (int i = 0; i < ConstantValue.othelloSize; i++)
                 Row(
                   children: [
-                    for (int j = 0; j < 8; j++)
+                    for (int j = 0; j < ConstantValue.othelloSize; j++)
                       Container(
                         color: _getTileColor(board[i][j]),
-                        height: w / 8,
-                        width: w / 8,
+                        height: w / ConstantValue.othelloSize,
+                        width: w / ConstantValue.othelloSize,
                       )
                   ],
                 )

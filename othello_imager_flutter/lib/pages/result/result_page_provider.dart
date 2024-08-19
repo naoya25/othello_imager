@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:othello_imager_flutter/main.dart';
 import 'package:othello_imager_flutter/utils/snackbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -15,6 +16,11 @@ class ResultPageNotifier extends _$ResultPageNotifier {
   @override
   ResultPageNotifier build() {
     return this;
+  }
+
+  Future<void> generateImage() async {
+    // final url = await client.openAiService.generateImage('猫');
+    // print(url);
   }
 
   Future<void> saveImage(
