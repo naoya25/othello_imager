@@ -1,10 +1,12 @@
+import 'package:dotenv/dotenv.dart';
 import 'package:serverpod/serverpod.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class OpenAiService extends Endpoint {
   Future<String> generateImage(Session session, String prompt) async {
-    final apiKey = '****';
+    var env = DotEnv(includePlatformEnvironment: true)..load();
+    final apiKey = env['API_KEY'];
     final url = Uri.parse('https://api.openai.com/v1/images/generations');
 
     final response = await http.post(

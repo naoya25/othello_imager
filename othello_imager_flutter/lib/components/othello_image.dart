@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:othello_imager_flutter/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class OthelloImage extends StatelessWidget {
   final List<List<int>> board;
@@ -46,11 +47,15 @@ class OthelloImage extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(
-          child: Image.network(
-            url,
+          child: CachedNetworkImage(
+            imageUrl: url,
             height: w,
             width: w,
             fit: BoxFit.cover,
+            placeholder: (context, url) => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
         SizedBox(

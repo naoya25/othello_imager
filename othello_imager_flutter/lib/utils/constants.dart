@@ -1,5 +1,5 @@
 class ConstantValue {
-  static const int othelloSize = 6;
+  static const int othelloSize = 14;
   static const int playerEmpty = 0;
   static const int playerUser = 1;
   static const int playerCp = 2;

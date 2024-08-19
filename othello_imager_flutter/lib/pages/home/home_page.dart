@@ -19,7 +19,17 @@ class HomePage extends ConsumerWidget {
         child: ElevatedButton(
           onPressed: () async {
             context.push('/play');
+
+            // 画像の事前生成 & 事前キャッシュ
             await resultPageNotifier.generateImage();
+            final imageUrl = ref.watch(resultPageNotifierProvider);
+            if (context.mounted) {
+              imageUrl.whenData((url) async {
+                if (url != null && context.mounted) {
+                  await precacheImage(NetworkImage(url), context);
+                }
+              });
+            }
           },
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
