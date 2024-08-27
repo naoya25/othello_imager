@@ -1,30 +1,15 @@
-## serverpod でオセロアプリを開発
+# othello_imager_flutter
 
-- othello_imager
-- オセロアプリのちょっと面白い感じに作りたい
-- デスクトップアプリのみでとりあえず作る
-- 対戦機能はなし
-- コンピュータ側はランダムで手を選ぶ
+A new Flutter project with Serverpod.
 
-## メモ
+## Getting Started
 
-#### ページ構成
+This project is a starting point for a Flutter application that is using
+Serverpod.
 
-- HomePage
-  - ゲーム開始ボタン
-- PlayPage
-  - オセロやるページ
-- ResultPage
-  - 結果の表示
-  - 画像の表示
-  - など
+A great starting point for learning Serverpod is our documentation site at:
+[https://docs.serverpod.dev](https://docs.serverpod.dev).
 
-#### 使用技術
+To run the project, first make sure that the server is running, then do:
 
-- serverpod でやってるが、server 側は何もやってない
-
-#### TODO
-
-- リトライ機能
-- パスしまくったら負け判定が正しく出ない
-- CP を強くする
+    flutter run
